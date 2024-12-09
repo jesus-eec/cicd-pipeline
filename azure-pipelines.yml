@@ -39,6 +39,7 @@ stages:
   - stage: BuildStaging
     displayName: Stage Build for Staging
     dependsOn: BuildDev     #This stage runs after BuildDev State
+    condition: succeeded('BuildDev')
     jobs:
     - job: BuildMobileApp
       displayName: Build for Mobile App for Staging
@@ -71,6 +72,7 @@ stages:
     dependsOn: 
     - BuildDev        #This stage run after BuildDev
     - BuildStaging    #This stage run after BuildStaging 
+    condition: and(succeeded('BuildDev'),succeeded('BuildStaging'))
     jobs:
     - job: BuildMobileApp
       displayName: Build for Mobile App for Production
