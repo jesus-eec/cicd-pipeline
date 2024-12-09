@@ -8,19 +8,31 @@ pool:
 
 stages:
   - stage: BuildDev
+    displayName: Stage Build for Dev
     jobs:
     - job: BuildMobileApp
+      displayName: Build for Mobile App for Dev
     - job: BuildReactApp
+      displayName: Build for React App for Dev
     - job: BuildNodeApp
+      displayName: Build for Node App for Dev
   
   - stage: BuildStaging
-    job:
-    - job: BuildMobileApp
-    - job: BuildReactApp
-    - job: BuildNodeApp
-  
-  - stage: BuildPro
+    displayName: Stage Build for Staging
     jobs:
     - job: BuildMobileApp
+      displayName: Build for Mobile App for Staging
     - job: BuildReactApp
+      displayName: Build for React App for Staging
     - job: BuildNodeApp
+      displayName: Build for Node App for Staging
+  
+  - stage: BuildPro
+    displayName: Stage Build for Production
+    jobs:
+    - job: BuildMobileApp
+      displayName: Build for Mobile App for Production
+    - job: BuildReactApp
+      displayName: Build for React App for Production
+    - job: BuildNodeApp
+      displayName: Build for Node App for Production
