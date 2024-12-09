@@ -12,27 +12,72 @@ stages:
     jobs:
     - job: BuildMobileApp
       displayName: Build for Mobile App for Dev
+      steps:
+        - script: echo Building Mobile Application for Dev
+          displayName: Step Building Mobile App for Dev
+        - script: echo Running Unit Test for Dev
+          displayName: Step Running Unit Test for Dev
     - job: BuildReactApp
       displayName: Build for React App for Dev
+      steps:
+        - script: echo building react app for dev
+          displayName: Step Building Mobile App for Dev
+        - script: echo running unit test for Dev
+          displayName: Step running unit tet for dev
     - job: BuildNodeApp
       displayName: Build for Node App for Dev
+      steps:
+        - script: echo Building Node App for DEv
+          displayName: step building node app for dev
+        - script: echo Running Unit Test for Node App en Dev 
+          displayName: step running unit test for node app en dev
   
   - stage: BuildStaging
     displayName: Stage Build for Staging
     jobs:
     - job: BuildMobileApp
       displayName: Build for Mobile App for Staging
+      steps:
+        - script: echo building mobile app for staging
+          displayName: Step Building Mobile App for staging
+        - script: echo running unit test for staging
+          displayName: Step running unit tet for staging
     - job: BuildReactApp
       displayName: Build for React App for Staging
+      steps:
+        - script: echo building react app for staging
+          displayName: Step Building Reac App for staging
+        - script: echo running unit test for staging
+          displayName: Step running unit tet for staging
     - job: BuildNodeApp
       displayName: Build for Node App for Staging
+      steps:
+        - script: echo building node app for staging
+          displayName: Step Building Node App for staging
+        - script: echo running unit test for staging
+          displayName: Step running unit tet for staging
   
   - stage: BuildPro
     displayName: Stage Build for Production
     jobs:
     - job: BuildMobileApp
       displayName: Build for Mobile App for Production
+      steps:
+        - script: echo building mobile app for production
+          displayName: Step Building mobile App for production
+        - script: echo running unit test for production
+          displayName: Step running unit tet for production
     - job: BuildReactApp
       displayName: Build for React App for Production
+      steps:
+        - script: echo building react app for production
+          displayName: Step Building react App for production
+        - script: echo running unit test for production
+          displayName: Step running unit tet for production
     - job: BuildNodeApp
       displayName: Build for Node App for Production
+      steps:
+        - script: echo building node app for production
+          displayName: Step Building node App for production
+        - script: echo running unit test for production
+          displayName: Step running unit tet for production
