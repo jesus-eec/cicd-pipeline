@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-  - stage: Build App
+  - stage: BuildApp
   - stage: DeployDev
 
 
