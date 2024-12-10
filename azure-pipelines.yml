@@ -11,23 +11,26 @@ stages:
   - stage: BuildDev
     displayName: Stage Build for Dev
     jobs:
-    - job: BuildMobileApp
+    - deployment: BuildMobileApp
       displayName: Build for Mobile App for Dev
+      environment: development
       steps:
         - script: echo 'Building Mobile Application for Dev'
           displayName: Step Building Mobile App for Dev
         - script: echo 'Running Unit Test for Dev'
           displayName: Step Running Unit Test for Dev
-    - job: BuildReactApp
+    - deployment: BuildReactApp
       dependsOn: BuildMobileApp
       displayName: Build for React App for Dev
+      environment: development
       steps:
         - script: echo 'building react app for dev'
           displayName: Step Building Mobile App for Dev
         - script: echo 'running unit test for Dev'
           displayName: Step running unit tet for dev
-    - job: BuildNodeApp
+    - deployment: BuildNodeApp
       displayName: Build for Node App for Dev
+      environment: development
       dependsOn:
       - BuildMobileApp
       - BuildReactApp
@@ -42,23 +45,26 @@ stages:
     dependsOn: BuildDev     #This stage runs after BuildDev State
     condition: succeeded('BuildDev')
     jobs:
-    - job: BuildMobileApp
+    - deployment: BuildMobileApp
       displayName: Build for Mobile App for Staging
+      environment: Staging
       steps:
         - script: echo 'building mobile app for staging'
           displayName: Step Building Mobile App for staging
         - script: echo 'running unit test for staging'
           displayName: Step running unit tet for staging
-    - job: BuildReactApp
+    - deployment: BuildReactApp
       displayName: Build for React App for Staging
+      environment: Staging
       dependsOn: BuildMobileApp
       steps:
         - script: echo 'building react app for staging'
           displayName: Step Building Reac App for staging
         - script: echo 'running unit test for staging'
           displayName: Step running unit tet for staging
-    - job: BuildNodeApp
+    - deployment: BuildNodeApp
       displayName: Build for Node App for Staging
+      environment: Staging
       dependsOn:
       - BuildMobileApp
       - BuildReactApp
@@ -75,23 +81,26 @@ stages:
     - BuildStaging    #This stage run after BuildStaging 
     condition: and(succeeded('BuildDev'),succeeded('BuildStaging'))
     jobs:
-    - job: BuildMobileApp
+    - deployment: BuildMobileApp
       displayName: Build for Mobile App for Production
+      environment: Production
       steps:
         - script: echo 'building mobile app for production'
           displayName: Step Building mobile App for production
         - script: echo 'running unit test for production'
           displayName: Step running unit tet for production
-    - job: BuildReactApp
+    - deployment: BuildReactApp
       displayName: Build for React App for Production
+      environment: Production
       dependsOn: BuildMobileApp
       steps:
         - script: echo 'building react app for production'
           displayName: Step Building react App for production
         - script: echo 'running unit test for production'
           displayName: Step running unit tet for production
-    - job: BuildNodeApp
+    - deployment: BuildNodeApp
       displayName: Build for Node App for Production
+      environment: Production
       dependsOn:
       - BuildMobileApp
       - BuildReactApp
